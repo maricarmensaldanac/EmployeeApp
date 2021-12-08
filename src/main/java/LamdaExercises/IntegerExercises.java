@@ -1,13 +1,10 @@
 package LamdaExercises;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class Exercises {
+public class IntegerExercises {
 
     public static void main(String[] args) {
         ArrayList<Integer> numbers = new ArrayList<Integer>();
@@ -17,7 +14,7 @@ public class Exercises {
         numbers.add(8);
         numbers.add(8);
         numbers.add(1);
-        order(numbers);
+        getSum(numbers);
 
     }
 
@@ -63,5 +60,30 @@ public class Exercises {
     static public void limit(ArrayList<Integer> numbers) {
         List<String> result = numbers.stream().map(x -> String.valueOf(x) + 1).collect(Collectors.toList());
         result.forEach(System.out::println);
+    }
+
+    //Write a method that returns the average of a list of integers
+    static public void average(ArrayList<Integer> numbers) {
+        //Optional double is an object that may or not contain a double. If it contains a double we can access to the value by getAsDouble().
+        OptionalDouble average = numbers.stream().mapToDouble(x -> x).average();
+        double av = average.getAsDouble();
+        System.out.println(average); //OptionalDouble[6.5]
+        System.out.println(av); //6.5
+    }
+
+    //Find the maximum value in the array,
+    static public void getMax(ArrayList<Integer> numbers)
+    {
+        System.out.println(numbers.stream().max((x,y) -> x.compareTo(y)).toString());
+    }
+
+    // find the minimum value in an array,
+    static public void getMin(ArrayList<Integer> numbers) {
+        numbers.stream().min((x,y) -> x.compareTo(y)).toString();
+    }
+
+    // find the sum of the values in the array,
+    static public void getSum(ArrayList<Integer> numbers){
+        System.out.println(numbers.stream().mapToDouble(x -> x).sum());
     }
 }
